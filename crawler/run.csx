@@ -37,9 +37,9 @@ public class Issue {
 
 public static void Run(TimerInfo myTimer, ICollector<string> issueQueue, ICollector<IssueTableItem> issueTable, TraceWriter log)
 { 
-    var issues = GetIssues();
-    issues.ToList().ForEach(i => issueQueue.Add(JsonConvert.SerializeObject(i)));
-    CommitIssues(issues, issueTable, log);
+    // var issues = GetIssues();
+    // issues.ToList().ForEach(i => issueQueue.Add(JsonConvert.SerializeObject(i)));
+    //CommitIssues(issues, issueTable, log);
 }
 
 public static IEnumerable<Issue> GetIssues() {
