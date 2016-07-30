@@ -38,8 +38,11 @@ public class Issue {
 public static void Run(TimerInfo myTimer, IQueryable<IssueTableItem> inIssueTable, ICollector<IssueTableItem> outIssueTable, ICollector<string> issueQueue, TraceWriter log)
 { 
     var issues = GetIssues(inIssueTable);
-    issues.ToList().ForEach(i => issueQueue.Add(JsonConvert.SerializeObject(i)));
-    CommitIssues(issues, outIssueTable);
+    if(issues != null && issues.Count() > 0 ) {
+        log.Info("Processed " + issues.Count().ToString() + " new issues.");
+        issues.ToList().ForEach(i => issueQueue.Add(JsonConvert.SerializeObject(i)));
+        CommitIssues(issues, outIssueTable);
+    }
 }
 
 public static IEnumerable<Issue> GetIssues(IQueryable<IssueTableItem> inIssueTable) {
