@@ -14,13 +14,6 @@
       "direction": "in"
     },
     {
-      "type": "table",
-      "name": "outIssueTable",
-      "tableName": "issue",
-      "connection": "sodiumq_STORAGE",
-      "direction": "out"
-    },
-    {
       "type": "queue",
       "name": "issueQueue",
       "queueName": "issuequeue",
