@@ -9,7 +9,9 @@ module.exports = function (context, issue, tagTable) {
       method: 'POST'
     };
 
-    context.log(tagTable);
+
+   // var subscribedTags = 
+    context.log(issue);
 
     var req = http.request(post_options, res => {});
     req.on('error', function(e) {
