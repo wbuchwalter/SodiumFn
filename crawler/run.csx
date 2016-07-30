@@ -67,7 +67,7 @@ public static void CommitIssues(IEnumerable<Issue> issues, ICollector<IssueTable
         table.Add(
             new IssueTableItem {
                 IssueId = i.IssueId,
-                PartitionKey = "1"
+                PartitionKey = "1",
                 RowKey = i.issueId
             });
     });
