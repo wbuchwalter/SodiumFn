@@ -10,7 +10,7 @@
     {
       "type": "table",
       "name": "tagTable",
-      "tableName": "issue",
+      "tableName": "tag",
       "connection": "sodiumq_STORAGE",
       "direction": "in"
     }
