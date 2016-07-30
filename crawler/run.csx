@@ -63,7 +63,7 @@ public static string MakeRequest() {
 }
 
 public static void CommitIssues(IEnumerable<Issue> issues, ICollector<IssueTableItem> table, TraceWriter log) {
-    log.Info(issues.Count());
+    log.Info(issues.Count().ToString());
     //issues.ToList().ForEach( i => {
         // table.Add(
         //     new IssueTableItem {
