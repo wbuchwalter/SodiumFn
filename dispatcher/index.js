@@ -26,7 +26,7 @@ module.exports = function (context, issue, tagTable) {
             context.log('problem with request: ' + e.message);
         });
 
-        req.write(`{"channel": "@julienstroheker", "text": " You've got some work to do! : <${issue.link}|${issue.title}>"}`);
+        req.write(`{"channel": "@${d}", "text": " You've got some work to do! : <${issue.link}|${issue.title}>"}`);
         req.end();
     });
 
