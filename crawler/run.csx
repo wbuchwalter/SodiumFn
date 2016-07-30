@@ -35,7 +35,7 @@ public class Issue {
     public string IssueId {get; set;}
 }
 
-public static void Run(TimerInfo myTimer, ICollector<string> issueQueue, IQueryable<IssueTableItem> inIssueTable, ICollector<IssueTableItem> outIssueTable, TraceWriter log)
+public static void Run(TimerInfo myTimer, IQueryable<IssueTableItem> inIssueTable, ICollector<IssueTableItem> outIssueTable, ICollector<string> issueQueue, TraceWriter log)
 { 
     var issues = GetIssues(inIssueTable);
     issues.ToList().ForEach(i => issueQueue.Add(JsonConvert.SerializeObject(i)));
