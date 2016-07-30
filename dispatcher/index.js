@@ -14,7 +14,7 @@ module.exports = function (context, issue, tagTable) {
     var dests = [];
     issue.tags.map(i => { tagTable.filter(t => t.tag === i).map(t => { 
         context.log('concat');
-        dests.concat(dests, t.alias);
+        dests = dests.concat(t.alias);
         //return t.alias;
     }) });
     context.log(dests);
