@@ -43,7 +43,7 @@ public static void Run(TimerInfo myTimer, IQueryable<IssueTableItem> inIssueTabl
 }
 
 public static IEnumerable<Issue> GetIssues(IQueryable<IssueTableItem> inIssueTable) {
-    var existingIds = inIssueTable.Select(i => i.IssueId).ToList();
+    var existingIds = inIssueTable.Select(i => i.RowKey).ToList();
     var data = GetFakeData();
     IssueRequestResponse res = JsonConvert.DeserializeObject<IssueRequestResponse>(data);
     
