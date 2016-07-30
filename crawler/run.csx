@@ -15,9 +15,7 @@ public class IssueRequestResponse {
     public IEnumerable<Issue> Issues;
 }
 
-public class IssueTableItem {
-    public string PartitionKey { get; set; }
-    public string RowKey { get; set; }
+public class IssueTableItem : TableEntity {
     public string Tags {get;set;}
 }
 
