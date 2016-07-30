@@ -15,7 +15,14 @@
     },
     {
       "type": "table",
-      "name": "issueTable",
+      "name": "inIssueTable",
+      "tableName": "issue",
+      "connection": "sodiumq_STORAGE",
+      "direction": "in"
+    },
+    {
+      "type": "table",
+      "name": "outIssueTable",
       "tableName": "issue",
       "connection": "sodiumq_STORAGE",
       "direction": "out"

@@ -35,17 +35,23 @@ public class Issue {
     public string IssueId {get; set;}
 }
 
-public static void Run(TimerInfo myTimer, ICollector<string> issueQueue, ICollector<IssueTableItem> issueTable, TraceWriter log)
+public static void Run(TimerInfo myTimer, ICollector<string> issueQueue, IQueryable<IssueTableItem> inIssueTable, ICollector<IssueTableItem> outIssueTable, TraceWriter log)
 { 
-    var issues = GetIssues();
+    var issues = GetIssues(inIssueTable);
     issues.ToList().ForEach(i => issueQueue.Add(JsonConvert.SerializeObject(i)));
-    CommitIssues(issues, issueTable);
+    CommitIssues(issues, outIssueTable);
 }
 
-public static IEnumerable<Issue> GetIssues() {
+public static IEnumerable<Issue> GetIssues(ICollector<IssueTableItem> inIssueTable) {
+    var existingIds = inIssueTable.Select(i => i.IssueId).ToList();
     var data = GetFakeData();
     IssueRequestResponse res = JsonConvert.DeserializeObject<IssueRequestResponse>(data);
-    return res.Issues;
+    
+    return GetDiffIssues(res.Issues, existingIds);
+}
+
+public static IEnumerable<Issue> GetDiffIssues(IEnumerable<Issue> set1, IEnumerable<string> set2Ids) {
+    return set1.Where(i => !set2Ids.Contains(i.IssueId));
 }
 
 public static string MakeRequest() {
