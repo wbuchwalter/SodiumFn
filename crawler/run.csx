@@ -15,8 +15,6 @@ public class IssueRequestResponse {
     public IEnumerable<Issue> Issues;
 }
 
-ICollector<Person> tableBinding
-
 public class IssueTableItem {
     public string PartitionKey { get; set; }
     public string RowKey { get; set; }
@@ -42,7 +40,6 @@ public static void Run(TimerInfo myTimer, ICollector<string> issueQueue, ICollec
     var issues = GetIssues();
     issues.ToList().ForEach(i => issueQueue.Add(JsonConvert.SerializeObject(i)));
     CommitIssues(issues, issueTable);
-    
 }
 
 public static IEnumerable<Issue> GetIssues() {
