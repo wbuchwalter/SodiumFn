@@ -18,7 +18,7 @@ public class IssueRequestResponse {
 public class IssueTableItem {
     public string PartitionKey { get; set; }
     public string RowKey { get; set; }
-    public string IssueId {get; set;}
+    public string Tags {get;set;}
 }
 
 public class Issue {
@@ -63,12 +63,12 @@ public static string MakeRequest() {
 }
 
 public static void CommitIssues(IEnumerable<Issue> issues, ICollector<IssueTableItem> table) {
-    issues.ToList().ForEach( i => {
+    //issues.ToList().ForEach( i => {
         table.Add(
             new IssueTableItem {
-                IssueId = i.IssueId,
                 PartitionKey = "1",
-                RowKey = i.IssueId
+                RowKey = issues[0].IssueId,
+                Tags = String.Join(",", issues[0].Tags)
             });
-    });
+   // });
 }
