@@ -13,7 +13,7 @@ module.exports = function (context, issue, tagTable) {
    // var subscribedTags = 
     var dests = [];
     issue.tags.forEach(i => { 
-        tagTable.filter(t => { t.tag === i}).forEach(t => {
+        tagTable.filter(t => t.tag === i).forEach(t => {
             dests = dests.concat(JSON.parse(t.alias));
         }) 
     });
