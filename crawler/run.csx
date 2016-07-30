@@ -1,6 +1,8 @@
 #r "Newtonsoft.Json"
+#r "Microsoft.WindowsAzure.Storage"
 #load "fakeData.csx"
 
+using Microsoft.WindowsAzure.Storage.Table;
 using System;
 using System.IO;
 using System.Net;
