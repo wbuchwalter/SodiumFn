@@ -1,6 +1,7 @@
 var http = require('https');
 
 module.exports = function (context, issue, tagTable) {
+    context.log('dispatcher start');
      var post_options = {
       host: 'hooks.slack.com',
       port: '443',
