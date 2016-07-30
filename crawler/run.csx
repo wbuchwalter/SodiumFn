@@ -63,11 +63,11 @@ public static string MakeRequest() {
 }
 
 public static void CommitIssues(IEnumerable<Issue> issues, ICollector<IssueTableItem> table) {
-    var items = issues.ToList().ForEach( i => {
+    issues.ToList().ForEach( i => {
         table.Add(
             new IssueTableItem {
                 IssueId = i.IssueId,
-                PartitionKey = 1
+                PartitionKey = "1"
             });
     });
 }
