@@ -6,6 +6,13 @@
       "queueName": "issuequeue",
       "connection": "sodiumq_STORAGE",
       "direction": "in"
+    },
+    {
+      "type": "table",
+      "name": "tagsTable",
+      "tableName": "issue",
+      "connection": "sodiumq_STORAGE",
+      "direction": "in"
     }
   ],
   "disabled": false
