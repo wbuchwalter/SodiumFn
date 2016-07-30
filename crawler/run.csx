@@ -42,6 +42,8 @@ public static void Run(TimerInfo myTimer, IQueryable<IssueTableItem> inIssueTabl
         log.Info("Processed " + issues.Count().ToString() + " new issues.");
         issues.ToList().ForEach(i => issueQueue.Add(JsonConvert.SerializeObject(i)));
         CommitIssues(issues, outIssueTable);
+    } else {
+        log.Info("No new issues to process");
     }
 }
 
