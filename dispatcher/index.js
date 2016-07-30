@@ -9,8 +9,7 @@ module.exports = function (context, issue, tagTable) {
       method: 'POST'
     };
 
-    //var issueTags = issue.Tags
-    context.log(issue);
+    context.log(tagTable);
 
     var req = http.request(post_options, res => {});
     req.on('error', function(e) {
