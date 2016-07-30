@@ -13,7 +13,7 @@ module.exports = function (context, issue) {
         context.log('problem with request: ' + e.message);
     });
 
-    req.write(`{"channel": "@will", "text": " You've got some work to do! : <${issue.link}|${issue.title}>"}`);
+    req.write(`{"channel": "@julienstroheker", "text": " You've got some work to do! : <${issue.link}|${issue.title}>"}`);
     req.end();
 
     context.done();
