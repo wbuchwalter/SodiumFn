@@ -9,7 +9,7 @@
     },
     {
       "type": "table",
-      "name": "tagsTable",
+      "name": "tagTable",
       "tableName": "issue",
       "connection": "sodiumq_STORAGE",
       "direction": "in"
