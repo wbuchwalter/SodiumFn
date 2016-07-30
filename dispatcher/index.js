@@ -11,7 +11,7 @@ module.exports = function (context, issue, tagTable) {
 
 
    // var subscribedTags = 
-    var dests = issue.tags.map(i => { tagTable.filter(t => t.tag === i).map(t => tag.alias) });
+    var dests = issue.tags.map(i => { tagTable.filter(t => t.tag === i).map(t => t.alias) });
     console.log(dests);
 
     var req = http.request(post_options, res => {});
