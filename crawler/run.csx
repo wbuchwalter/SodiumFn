@@ -62,7 +62,7 @@ public static string MakeRequest() {
     return responseFromServer;
 }
 
-public void CommitIssues(IEnumerable<Issue> issues, ICollector<IssueTableItem> table) {
+public static void CommitIssues(IEnumerable<Issue> issues, ICollector<IssueTableItem> table) {
     var items = issues.ToList().ForEach( i => {
         table.Add(
             new IssueTableItem {
