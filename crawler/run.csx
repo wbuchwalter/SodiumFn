@@ -37,9 +37,9 @@ public class Issue {
 
 public static void Run(TimerInfo myTimer, ICollector<string> issueQueue, ICollector<IssueTableItem> issueTable, TraceWriter log)
 { 
-    // var issues = GetIssues();
-    // issues.ToList().ForEach(i => issueQueue.Add(JsonConvert.SerializeObject(i)));
-    //CommitIssues(issues, issueTable, log);
+    var issues = GetIssues();
+    issues.ToList().ForEach(i => issueQueue.Add(JsonConvert.SerializeObject(i)));
+    CommitIssues(issues, issueTable);
 }
 
 public static IEnumerable<Issue> GetIssues() {
@@ -62,14 +62,13 @@ public static string MakeRequest() {
     return responseFromServer;
 }
 
-public static void CommitIssues(IEnumerable<Issue> issues, ICollector<IssueTableItem> table, TraceWriter log) {
-    log.Info(issues.Count().ToString());
-    //issues.ToList().ForEach( i => {
-        // table.Add(
-        //     new IssueTableItem {
-        //         PartitionKey = "1",
-        //         RowKey = issues.FirstOrDefault().IssueId,
-        //         Tags = String.Join(",", issues.FirstOrDefault().Tags)
-        //     });
-   // });
+public static void CommitIssues(IEnumerable<Issue> issues, ICollector<IssueTableItem> table) {
+    issues.ToList().ForEach( i => {
+        table.Add(
+            new IssueTableItem {
+                PartitionKey = "1",
+                RowKey = i.IssueId,
+                Tags = String.Join(",", i.Tags)
+            });
+    });
 }

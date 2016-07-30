@@ -18,7 +18,7 @@
       "name": "issueTable",
       "tableName": "issue",
       "connection": "sodiumq_STORAGE",
-      "direction": "in"
+      "direction": "out"
     }
   ],
   "disabled": false
