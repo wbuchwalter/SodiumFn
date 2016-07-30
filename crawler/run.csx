@@ -35,14 +35,14 @@ public class Issue {
     public string IssueId {get; set;}
 }
 
-public static void Run(TimerInfo myTimer, IQueryable<IssueTableItem> inIssueTable, ICollector<string> issueQueue, TraceWriter log)
+public static void Run(TimerInfo myTimer, IQueryable<IssueTableItem> inIssueTable, ICollector<IssueTableItem> outIssueTable, ICollector<string> issueQueue, TraceWriter log)
 { 
     var issues = GetIssues(inIssueTable);
     issues.ToList().ForEach(i => issueQueue.Add(JsonConvert.SerializeObject(i)));
-    //CommitIssues(issues, outIssueTable);
+    CommitIssues(issues, outIssueTable);
 }
 
-public static IEnumerable<Issue> GetIssues(ICollector<IssueTableItem> inIssueTable) {
+public static IEnumerable<Issue> GetIssues(IQueryable<IssueTableItem> inIssueTable) {
     var existingIds = inIssueTable.Select(i => i.IssueId).ToList();
     var data = GetFakeData();
     IssueRequestResponse res = JsonConvert.DeserializeObject<IssueRequestResponse>(data);
