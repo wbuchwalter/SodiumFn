@@ -67,8 +67,8 @@ public static void CommitIssues(IEnumerable<Issue> issues, ICollector<IssueTable
         table.Add(
             new IssueTableItem {
                 PartitionKey = "1",
-                RowKey = issues[0].IssueId,
-                Tags = String.Join(",", issues[0].Tags)
+                RowKey = issues.FirstOrDefault().IssueId,
+                Tags = String.Join(",", issues.FirstOrDefault().Tags)
             });
    // });
 }
