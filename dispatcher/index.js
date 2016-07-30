@@ -12,21 +12,23 @@ module.exports = function (context, issue, tagTable) {
 
    // var subscribedTags = 
     var dests = [];
-    context.log(issue);
-    issue.tags.map(i => { tagTable.filter(t => { context.log(t); return t.tag === i}).map(t => { 
-        context.log('concat');
-        dests = dests.concat(JSON.parse(t.alias));
-        //return t.alias;
-    }) });
-    context.log(dests);
-
-    var req = http.request(post_options, res => {});
-    req.on('error', function(e) {
-        context.log('problem with request: ' + e.message);
+    issue.tags.forEach(i => { 
+        tagTable.filter(t => { t.tag === i}).forEach(t => {
+            dests = dests.concat(JSON.parse(t.alias));
+        }) 
     });
 
-    req.write(`{"channel": "@julienstroheker", "text": " You've got some work to do! : <${issue.link}|${issue.title}>"}`);
-    req.end();
+    context.log(dests);
+
+    dests.forEach(d => {
+        var req = http.request(post_options, res => {});
+        req.on('error', function(e) {
+            context.log('problem with request: ' + e.message);
+        });
+
+        req.write(`{"channel": "@${d}", "text": " You've got some work to do! : <${issue.link}|${issue.title}>"}`);
+        req.end();
+    });
 
     context.done();
 };
