@@ -15,7 +15,7 @@ module.exports = function (context, issue, tagTable) {
     context.log(issue);
     issue.tags.map(i => { tagTable.filter(t => { context.log(t); return t.tag === i}).map(t => { 
         context.log('concat');
-        dests = dests.concat(t.alias);
+        dests = dests.concat(JSON.parse(t.alias));
         //return t.alias;
     }) });
     context.log(dests);
